@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gayu AI Virtual Assistant</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="stage" aria-label="Gayu virtual assistant">
+    <div class="aurora"></div>
+    <canvas id="particleCanvas" aria-hidden="true"></canvas>
+
+    <section class="assistant-shell">
+      <div class="top-bar">
+        <div class="brand">
+          <span class="pulse-dot"></span>
+          <div>
+            <h1>Gayu</h1>
+            <p>AI virtual assistant</p>
+          </div>
+        </div>
+
+        <div class="status-pill" id="statusPill">
+          <span></span>
+          <strong id="statusText">Initializing</strong>
+        </div>
+      </div>
+
+      <div class="assistant-grid">
+        <section class="screen-panel" aria-label="Gayu avatar screen">
+          <div class="screen-glass">
+            <div id="avatarMount" class="avatar-mount"></div>
+            <div id="animeAvatar" class="anime-avatar" aria-hidden="true">
+              <div class="night-sky"></div>
+              <img class="exact-avatar-image" src="assets/gayu-avatar.png" alt="" onerror="this.remove()" />
+              <div class="anime-girl">
+                <div class="cat-ear left"><span></span></div>
+                <div class="cat-ear right"><span></span></div>
+                <div class="hair-back"></div>
+                <div class="twin-tail left"></div>
+                <div class="twin-tail right"></div>
+                <div class="body">
+                  <div class="shirt"></div>
+                  <div class="collar left"></div>
+                  <div class="collar right"></div>
+                  <div class="bow"><span></span></div>
+                  <div class="badge"></div>
+                </div>
+                <div class="arm left"></div>
+                <div class="arm wave">
+                  <div class="forearm"></div>
+                  <div class="hand">
+                    <i></i><i></i><i></i><i></i><b></b>
+                  </div>
+                </div>
+                <div class="head">
+                  <div class="bangs">
+                    <i></i><i></i><i></i><i></i><i></i><i></i>
+                  </div>
+                  <div class="side-lock left"></div>
+                  <div class="side-lock right"></div>
+                  <div class="eye left"><span></span></div>
+                  <div class="eye right"><span></span></div>
+                  <div class="cheek left"></div>
+                  <div class="cheek right"></div>
+                  <div class="anime-mouth"></div>
+                </div>
+              </div>
+            </div>
+            <div class="scanline"></div>
+            <div class="holo-rings" aria-hidden="true">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            <div class="voice-wave" id="voiceWave" aria-hidden="true">
+              <i></i><i></i><i></i><i></i><i></i>
+            </div>
+          </div>
+
+          <div class="quick-commands" aria-label="Voice commands">
+            <button data-command="Open YouTube">YouTube</button>
+            <button data-command="Open Google">Google</button>
+            <button data-command="Play Music">Music</button>
+            <button data-command="Tell Time">Time</button>
+            <button data-command="Tell Joke">Joke</button>
+            <button data-command="Talk like a friend">Friend</button>
+          </div>
+        </section>
+
+        <aside class="chat-panel" aria-label="Conversation panel">
+          <div class="settings-row">
+            <label class="field">
+              <span>OpenAI API key</span>
+              <input id="apiKeyInput" type="password" autocomplete="off" placeholder="sk-..." />
+            </label>
+            <label class="field compact">
+              <span>Model</span>
+              <input id="modelInput" type="text" value="gpt-4.1-mini" />
+            </label>
+            <label class="field">
+              <span>ElevenLabs API key</span>
+              <input id="elevenKeyInput" type="password" autocomplete="off" placeholder="xi-..." />
+            </label>
+            <label class="field compact">
+              <span>Voice ID</span>
+              <input id="voiceIdInput" type="text" value="21m00Tcm4TlvDq8ikWAM" />
+            </label>
+            <label class="field wide">
+              <span>Ready Player Me GLB URL</span>
+              <input id="avatarUrlInput" type="url" placeholder="https://models.readyplayer.me/avatar-id.glb?morphTargets=ARKit" />
+            </label>
+          </div>
+
+          <div class="chat-log" id="chatLog" aria-live="polite">
+            <article class="message gayu">
+              <span>Gayu</span>
+              <p>Hi, I am Gayu. I am listening, and I will answer softly like a real companion.</p>
+            </article>
+          </div>
+
+          <form class="composer" id="composer">
+            <button type="button" class="icon-btn mic" id="micButton" aria-label="Toggle microphone">
+              <span></span>
+            </button>
+            <input id="textInput" type="text" placeholder="Type or speak to Gayu..." autocomplete="off" />
+            <button type="submit" class="send-btn">Send</button>
+          </form>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
